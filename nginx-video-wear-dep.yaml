@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment-video
+  namespace: sun
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-video
+  template:
+    metadata:
+      labels:
+        app: nginx-video
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: html
+        configMap:
+          name: index-html-configmap-video
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment-wear
+  namespace: sun
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-wear
+  template:
+    metadata:
+      labels:
+        app: nginx-wear
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: html
+        configMap:
+          name: index-html-configmap-wear
+

@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: index-html-configmap-video
+  namespace: sun
+data:
+  index.html: |
+    <html>
+      <head><title>The App</title></head>
+      <body>
+        <h1>My App Video</h1>
+      </body>
+    </html>
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: index-html-configmap-wear
+  namespace: sun
+data:
+  index.html: |
+    <html>
+      <head><title>The App</title></head>
+      <body>
+        <h1>My App wear</h1>
+      </body>
+    </html>
+
